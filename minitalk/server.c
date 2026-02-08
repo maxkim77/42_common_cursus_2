@@ -6,7 +6,7 @@
 /*   By: jeongkim <jeongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 17:44:52 by jeongkim          #+#    #+#             */
-/*   Updated: 2026/02/08 17:45:10 by jeongkim         ###   ########.fr       */
+/*   Updated: 2026/02/08 22:30:47 by jeongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ static void	server_handler(int sig, siginfo_t *info, void *context)
 	s.bits++;
 	if (s.bits == 8)
 	{
-		write(STDOUT_FILENO, &s.data, 1);
+		if (s.data == '\0')
+			write(STDOUT_FILENO, "\n", 1);
+		else
+			write(STDOUT_FILENO, &s.data, 1);
 		s.bits = 0;
 		s.data = 0;
 	}
