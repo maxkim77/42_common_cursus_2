@@ -8,11 +8,6 @@ The goal of this project is to understand low-level communication mechanisms in 
 
 ## Instructions
 
-### Requirements
-- macOS or Linux
-- `make`
-- `cc` or `clang`
-
 ### Compilation
 ```bash
 make
@@ -41,13 +36,11 @@ Example:
 ### References
 - `man 2 sigaction`
 - `man 7 signal`
-- `man 2 kill`
-- *Advanced Programming in the UNIX Environment* – W. Richard Stevens
-- POSIX signal documentation
+- `man 7 signal-saftey`
+- Sending and Handling Signals in C (kill, signal, sigaction) - youtube
+
 
 ### AI Usage
 AI was used to:
 - Help structure and write this README file
 - Clarify and document the signal-based communication logic
-
-AI was not used to implement the final source code; it was only used for documentation and explanation purposes.
