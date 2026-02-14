@@ -1,23 +1,17 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: yerilee <yerilee@student.42.fr>            +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/07/20 20:58:07 by yerilee           #+#    #+#              #
-#    Updated: 2023/07/29 19:25:15 by yerilee          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = so_long
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS = main.c\
+SRCS = main.c \
+		game_init.c \
+		map_load.c \
+		map_load_utils.c \
+		map_utils.c \
 		img.c \
 		key.c \
+		player.c \
+		exit.c \
 		map.c \
 		path.c \
 		error_free.c \
@@ -27,26 +21,37 @@ SRCS = main.c\
 		gnl/get_next_line.c \
 		gnl/get_next_line_utils.c \
 		ft_printf/ft_printf.c \
-		ft_printf/ft_printf_detail.c \
+		ft_printf/ft_printf_detail.c
 
 OBJS = $(SRCS:.c=.o)
 
-all : $(NAME)
+MLX_DIR = minilibx-linux
 
-$(NAME) :$(OBJS)
-	make -C mlx
-	$(CC) $(CFLAGS) -L ./mlx -lmlx -framework OpenGL -framework AppKit -o $@ $^
+# ===== Linux (42경산) =====
+MLX_LIB = -L$(MLX_DIR) -lmlx
+SYS_LIBS = -lXext -lX11 -lm
 
-%.o : %.c
+# ===== macOS =====
+# MLX_DIR = minilibx-linux
+# MLX_LIB = -L$(MLX_DIR) -lmlx
+# SYS_LIBS = -framework OpenGL -framework AppKit
+
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	$(MAKE) -C $(MLX_DIR)
+	$(CC) $(CFLAGS) $(OBJS) $(MLX_LIB) $(SYS_LIBS) -o $(NAME)
+
+%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-clean :
-	make clean -C mlx
+clean:
+	$(MAKE) clean -C $(MLX_DIR)
 	rm -f $(OBJS)
 
-fclean : clean
+fclean: clean
 	rm -f $(NAME)
 
-re : fclean all
+re: fclean all
 
-.PHONY : all clean fclean re
+.PHONY: all clean fclean re

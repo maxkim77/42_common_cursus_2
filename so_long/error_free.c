@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_free.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yerilee <yerilee@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jeongkim <jeongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/28 19:28:09 by yerilee           #+#    #+#             */
-/*   Updated: 2023/08/01 14:58:52 by yerilee          ###   ########.fr       */
+/*   Created: 2026/02/14 22:43:24 by jeongkim          #+#    #+#             */
+/*   Updated: 2026/02/14 22:55:24 by jeongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ void	error(char *s)
 	exit(0);
 }
 
-void	ft_free_string(char *s)
+void	ft_free_string(char **s)
 {
-	if (s)
+	if (s && *s)
 	{
-		free(s);
-		s = 0;
+		free(*s);
+		*s = NULL;
 	}
 }

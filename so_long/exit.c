@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlenn.c                                       :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeongkim <jeongkim@student.42.fr>          +#+  +:+         +#+       */
+/*   By: jeongkim <jeongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/14 22:02:56 by jeongkim          #+#    #+#             */
-/*   Updated: 2026/02/14 22:02:57 by jeongkim         ###   ########.fr       */
+/*   Created: 2026/02/14 23:30:00 by jeongkim          #+#    #+#             */
+/*   Updated: 2026/02/14 22:29:39 by jeongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "so_long.h"
 
-int	ft_strlenn(const char *s)
+int	exit_game(t_game *game)
 {
-	int	len;
-
-	len = 0;
-	while (s[len])
-		len++;
-	return (len);
+	if (game && game->mlx && game->win)
+		mlx_destroy_window(game->mlx, game->win);
+	exit(0);
 }

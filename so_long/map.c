@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yerilee <yerilee@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jeongkim <jeongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/28 19:18:23 by yerilee           #+#    #+#             */
-/*   Updated: 2023/08/01 15:32:38 by yerilee          ###   ########.fr       */
+/*   Created: 2026/02/14 22:44:28 by jeongkim          #+#    #+#             */
+/*   Updated: 2026/02/14 22:44:29 by jeongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,21 @@ void	is_rectangular(t_game *game)
 
 void	is_valid_map_wall(t_game *game)
 {
-	int	col;
-	int	end_width;
+	size_t	col;
+	size_t	end_index;
 
 	col = 0;
-	end_width = ft_strlen(game->line) - 1;
-	while (col < end_width)
+	end_index = ft_strlen(game->line) - 1;
+	while (col < end_index)
 	{
 		if (col < game->width && game->line[col] != '1')
 			error("Top wall is not valid\n");
-		else if (col * game->width == 0 || col % game->width == game->width - 1)
+		else if (col == 0 || col % game->width == game->width - 1)
 		{
 			if (game->line[col] != '1')
 				error("Left-Right wall is not valid\n");
 		}
-		else if (col > end_width - game->width && game->line[col] != '1')
+		else if (col > end_index - game->width && game->line[col] != '1')
 			error("Bottom wall is not valid\n");
 		col++;
 	}

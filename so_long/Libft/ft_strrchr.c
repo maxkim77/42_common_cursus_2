@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yerilee <yerilee@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jeongkim <jeongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/23 15:48:08 by yerilee           #+#    #+#             */
-/*   Updated: 2023/07/29 19:24:52 by yerilee          ###   ########.fr       */
+/*   Created: 2026/02/14 22:03:03 by jeongkim          #+#    #+#             */
+/*   Updated: 2026/02/14 22:18:47 by jeongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_strrchr(const char *s, int c)
 {
 	int	i;
 
-	i = (int)ft_strlenn(s);
+	i = ft_strlenn(s);
 	while (i >= 0)
 	{
 		if (s[i] == (char)c)
