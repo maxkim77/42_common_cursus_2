@@ -6,7 +6,7 @@
 /*   By: jeongkim <jeongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 21:00:00 by jeongkim          #+#    #+#             */
-/*   Updated: 2026/02/08 22:27:30 by jeongkim         ###   ########.fr       */
+/*   Updated: 2026/02/18 19:20:17 by jeongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void	client_handler(int sig)
 {
 	(void)sig;
+	g_ack = 1;
 }
 
 static void	client_send_message(int server_pid, char *str)
@@ -23,7 +24,7 @@ static void	client_send_message(int server_pid, char *str)
 
 	i = 0;
 	while (str[i] != '\0')
-		send_char(server_pid, str[i++]);
+		send_char(server_pid, (unsigned char)str[i++]);
 	send_char(server_pid, '\0');
 }
 
@@ -43,6 +44,7 @@ int	main(int ac, char **av)
 		ft_putstr_fd("error: invalid PID\n", 1);
 		return (EXIT_FAILURE);
 	}
+	g_ack = 0;
 	sigemptyset(&s_client.sa_mask);
 	s_client.sa_flags = SA_RESTART;
 	s_client.sa_handler = client_handler;

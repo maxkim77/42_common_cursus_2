@@ -6,7 +6,7 @@
 /*   By: jeongkim <jeongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 17:44:52 by jeongkim          #+#    #+#             */
-/*   Updated: 2026/02/08 22:30:47 by jeongkim         ###   ########.fr       */
+/*   Updated: 2026/02/18 19:18:28 by jeongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static void	server_handler(int sig, siginfo_t *info, void *context)
 		s.bits = 0;
 		s.data = 0;
 	}
+	kill(info->si_pid, SIGUSR1);
 }
 
 int	main(void)

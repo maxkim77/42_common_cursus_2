@@ -5,12 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeongkim <jeongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/08 17:48:13 by jeongkim          #+#    #+#             */
-/*   Updated: 2026/02/08 17:48:20 by jeongkim         ###   ########.fr       */
+/*   Created: 2026/02/18 19:49:00 by jeongkim          #+#    #+#             */
+/*   Updated: 2026/02/18 19:49:12 by jeongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+
+volatile sig_atomic_t	g_ack = 0;
 
 void	configure_sigaction_signals(struct sigaction *sa)
 {
@@ -20,18 +22,24 @@ void	configure_sigaction_signals(struct sigaction *sa)
 		exit(EXIT_FAILURE);
 }
 
+static int	get_sig_from_bit(char bit)
+{
+	if (bit == 0)
+		return (SIGUSR1);
+	return (SIGUSR2);
+}
+
 void	send_bit(pid_t pid, char bit, char pause_yn)
 {
 	int	sig;
 
 	(void)pause_yn;
-	if (bit == 0)
-		sig = SIGUSR1;
-	else
-		sig = SIGUSR2;
+	sig = get_sig_from_bit(bit);
+	g_ack = 0;
 	if (kill(pid, sig) < 0)
 		exit(EXIT_FAILURE);
-	usleep(WAIT_US);
+	while (g_ack == 0)
+		usleep(50);
 }
 
 void	send_char(pid_t pid, char c)
