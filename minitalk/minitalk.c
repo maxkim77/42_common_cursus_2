@@ -6,7 +6,7 @@
 /*   By: jeongkim <jeongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 19:49:00 by jeongkim          #+#    #+#             */
-/*   Updated: 2026/02/18 19:49:12 by jeongkim         ###   ########.fr       */
+/*   Updated: 2026/02/18 20:27:03 by jeongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,10 @@ static int	get_sig_from_bit(char bit)
 	return (SIGUSR2);
 }
 
-void	send_bit(pid_t pid, char bit, char pause_yn)
+void	send_bit(pid_t pid, char bit)
 {
 	int	sig;
 
-	(void)pause_yn;
 	sig = get_sig_from_bit(bit);
 	g_ack = 0;
 	if (kill(pid, sig) < 0)
@@ -51,7 +50,7 @@ void	send_char(pid_t pid, char c)
 	while (i >= 0)
 	{
 		bit = (char)((c >> i) & 1);
-		send_bit(pid, bit, 0);
+		send_bit(pid, bit);
 		i--;
 	}
 }

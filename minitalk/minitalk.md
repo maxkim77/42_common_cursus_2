@@ -44,3 +44,5 @@ Example:
 AI was used to:
 - Help structure and write this README file
 - Clarify and document the signal-based communication logic
+- Provide guidance on organizing function structure for clean signal handling and communication flow
+- Assist in designing the ACK mechanism using global variables
