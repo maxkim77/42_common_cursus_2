@@ -6,26 +6,11 @@
 /*   By: jeongkim <jeongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 22:44:34 by jeongkim          #+#    #+#             */
-/*   Updated: 2026/02/14 22:44:35 by jeongkim         ###   ########.fr       */
+/*   Updated: 2026/02/19 23:38:12 by jeongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	path_check(t_game *game)
-{
-	char	*path_dfs;
-
-	path_dfs = ft_strdup(game->line);
-	if (!path_dfs)
-		return ;
-	game->path_valid = 0;
-	game->path_check_c = 0;
-	dfs(game, game->locate, path_dfs);
-	free(path_dfs);
-	if (game->path_valid != 1 || (game->cnt_c != game->path_check_c))
-		error("No path\n");
-}
 
 void	dfs(t_game *game, int location, char *map)
 {
@@ -61,4 +46,19 @@ int	check_move(int i, t_game *game)
 	if (0 <= i && i <= end_index)
 		return (1);
 	return (0);
+}
+
+void	path_check(t_game *game)
+{
+	char	*path_dfs;
+
+	path_dfs = ft_strdup(game->line);
+	if (!path_dfs)
+		return ;
+	game->path_valid = 0;
+	game->path_check_c = 0;
+	dfs(game, game->locate, path_dfs);
+	free(path_dfs);
+	if (game->path_valid != 1 || (game->cnt_c != game->path_check_c))
+		error("No path\n");
 }

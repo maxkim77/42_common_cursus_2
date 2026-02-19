@@ -6,7 +6,7 @@
 /*   By: jeongkim <jeongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 23:30:00 by jeongkim          #+#    #+#             */
-/*   Updated: 2026/02/14 22:29:25 by jeongkim         ###   ########.fr       */
+/*   Updated: 2026/02/19 23:37:52 by jeongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,6 @@ static void	handle_exit(t_game *game, int i)
 	game->line[i] = 'E';
 }
 
-void	move_player(t_game *game, int i)
-{
-	if (!game || !game->line)
-		return ;
-	if (game->line[i] == '1')
-		return ;
-	if (game->line[i] == '0')
-		player_loaction_init(game, i, 0);
-	else if (game->line[i] == 'C')
-		handle_collect(game, i);
-	else if (game->line[i] == 'E')
-		handle_exit(game, i);
-	print_walk_cnt(game);
-}
-
 void	player_loaction_init(t_game *game, int i, int flag)
 {
 	if (!game || !game->line)
@@ -63,4 +48,19 @@ int	print_walk_cnt(t_game *game)
 	game->walk_cnt++;
 	ft_printf("%d\n", game->walk_cnt);
 	return (game->walk_cnt);
+}
+
+void	move_player(t_game *game, int i)
+{
+	if (!game || !game->line)
+		return ;
+	if (game->line[i] == '1')
+		return ;
+	if (game->line[i] == '0')
+		player_loaction_init(game, i, 0);
+	else if (game->line[i] == 'C')
+		handle_collect(game, i);
+	else if (game->line[i] == 'E')
+		handle_exit(game, i);
+	print_walk_cnt(game);
 }
