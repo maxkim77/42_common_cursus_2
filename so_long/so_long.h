@@ -6,7 +6,7 @@
 /*   By: jeongkim <jeongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 22:44:47 by jeongkim          #+#    #+#             */
-/*   Updated: 2026/02/15 00:34:16 by jeongkim         ###   ########.fr       */
+/*   Updated: 2026/02/19 22:28:45 by jeongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 /*
 ** macOS (minilibx_opengl)
 **
-** # include "minilibx_opengl_20191021/minilibx_macos_opengl.h"
+** # include "minilibx_opengl_20191021/mlx.h"
 ** # define KEY_ESC 53
 ** # define KEY_W 13
 ** # define KEY_A 0
