@@ -58,8 +58,6 @@ make
 ### Rendering & Logic
 - **MiniLibX**: `mlx_new_window`, `mlx_loop`, `mlx_xpm_file_to_image` 등을 활용하여 그래픽을 구현했습니다.
 - **Event Handling**: 윈도우 포커스 변경이나 최소화 시에도 그래픽이 깨지지 않고 유지되도록 설계되었습니다.
-- **Memory Management**: 프로그램 종료 시 할당된 모든 이미지 포인터와 메모리를 해제(Free)하여 누수를 방지합니다.
-
 
 ## Resources
 - MiniLibX 기본 개념 및 함수 설명  
