@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jeongkim <jeongkim@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2026/02/19 14:48:51 by jeongkim          #+#    #+#              #
+#    Updated: 2026/02/19 14:48:55 by jeongkim         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = so_long
 
 CC = cc
@@ -27,12 +39,12 @@ OBJS = $(SRCS:.c=.o)
 
 MLX_DIR = minilibx-linux
 
-# ===== Linux (42경산) =====
+# ===== Linux =====
 MLX_LIB = -L$(MLX_DIR) -lmlx
 SYS_LIBS = -lXext -lX11 -lm
 
 # ===== macOS =====
-# MLX_DIR = minilibx-linux
+# MLX_DIR = minilibx_macos_opengl/minilibx_opengl_20191021
 # MLX_LIB = -L$(MLX_DIR) -lmlx
 # SYS_LIBS = -framework OpenGL -framework AppKit
 
