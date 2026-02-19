@@ -33,7 +33,7 @@
 /*
 ** macOS (minilibx_opengl)
 **
-** # include "minilibx-linux/minilibx_macos_opengl.h"
+** # include "minilibx_opengl_20191021/minilibx_macos_opengl.h"
 ** # define KEY_ESC 53
 ** # define KEY_W 13
 ** # define KEY_A 0

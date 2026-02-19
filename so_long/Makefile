@@ -44,7 +44,7 @@ MLX_LIB = -L$(MLX_DIR) -lmlx
 SYS_LIBS = -lXext -lX11 -lm
 
 # ===== macOS =====
-# MLX_DIR = minilibx_macos_opengl/minilibx_opengl_20191021
+# MLX_DIR = minilibx_opengl_20191021
 # MLX_LIB = -L$(MLX_DIR) -lmlx
 # SYS_LIBS = -framework OpenGL -framework AppKit
 
