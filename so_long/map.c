@@ -6,18 +6,11 @@
 /*   By: jeongkim <jeongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 22:44:28 by jeongkim          #+#    #+#             */
-/*   Updated: 2026/02/14 22:44:29 by jeongkim         ###   ########.fr       */
+/*   Updated: 2026/02/19 23:38:44 by jeongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	map_check(t_game *game)
-{
-	is_rectangular(game);
-	is_valid_map_wall(game);
-	is_valid_map_params(game);
-}
 
 void	is_rectangular(t_game *game)
 {
@@ -70,4 +63,11 @@ void	is_valid_map_params(t_game *game)
 	}
 	if (game->cnt_p != 1 || game->cnt_e != 1 || game->cnt_c <= 0)
 		error("Map parmas is not valid!\n");
+}
+
+void	map_check(t_game *game)
+{
+	is_rectangular(game);
+	is_valid_map_wall(game);
+	is_valid_map_params(game);
 }
