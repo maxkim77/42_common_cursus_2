@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_stacks.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jeongkim <jeongkim@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/21 22:41:16 by jeongkim          #+#    #+#             */
+/*   Updated: 2026/02/22 00:30:08 by jeongkim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/push_swap.h"
 
 static void	rotate_both(t_stack_node **a,
@@ -40,6 +52,7 @@ static void	min_on_top(t_stack_node **a)
 {
 	while ((*a)->nbr != find_min(*a)->nbr)
 	{
+		set_index(*a);
 		if (find_min(*a)->above_median)
 			ra(a, true);
 		else
@@ -69,5 +82,6 @@ void	sort_stacks(t_stack_node **a, t_stack_node **b)
 		pa(a, b, true);
 	}
 	set_index(*a);
-	min_on_top(a);
+	if (!stack_sorted(*a))
+		min_on_top(a);
 }
