@@ -1,17 +1,25 @@
 #include "../../inc/push_swap.h"
 
-static void	rev_rotate(t_stack_node **stack) //Define a funtion that rotates a stack's bottom node, to the top
+static void	rev_rotate(t_stack_node **stack)
 {
-	t_stack_node	*last; //To store the pointer to the last node
+	t_stack_node	*old_top;
+	t_stack_node	*new_top;
+	t_stack_node	*new_last;
 
-	if (!*stack || !(*stack)->next) //Check if the stack is empty, or if there's one node
+	if (!*stack || !(*stack)->next)
 		return ;
-	last = find_last(*stack);
-	last->prev->next = NULL; //Assign to the `next` attribute of the node before itself, `NULL` effectively setting it as the current last node
-	last->next = *stack; //Assign to its own `next` attribute as the top node of the stack
-	last->prev = NULL; //Detach itself from the node before it
-	*stack = last;  //Complete appending itself to the top of the stack, and now holds the pointer to the top node
-	last->next->prev = last; //Update the current last node of the stack
+	// 1. 필요한 노드들을 명확하게 변수에 할당
+	old_top = *stack;
+	new_top = find_last(*stack);
+	new_last = new_top->prev;
+	// 2. 새로운 끝(꼬리) 형성
+	new_last->next = NULL;
+	// 3. 새로운 머리(Top) 설정 및 연결
+	new_top->next = old_top;
+	new_top->prev = NULL;
+	old_top->prev = new_top;
+	// 4. 스택의 실제 시작점 포인터 갱신
+	*stack = new_top;
 }
 
 void	rra(t_stack_node **a, bool print) //Rotate the bottom of `a` to the top of the stack and print the instruction

@@ -8,7 +8,7 @@ SRC_DIR				= srcs/
 OBJ_DIR				= obj/
 
 # Compiler and CFlags
-CC					= gcc
+CC					= cc
 CFLAGS				= -Wall -Werror -Wextra -I
 RM					= rm -f
 
@@ -26,7 +26,8 @@ PUSH_SWAP_DIR		=	$(SRC_DIR)push_swap/handle_errors.c \
 						$(SRC_DIR)push_swap/push_swap.c \
 						$(SRC_DIR)push_swap/split.c \
 						$(SRC_DIR)push_swap/stack_init.c \
-						$(SRC_DIR)push_swap/stack_utils.c
+						$(SRC_DIR)push_swap/stack_utils.c \
+						$(SRC_DIR)push_swap/stack_utils2.c \
 
 # Concatenate all source files
 SRCS 				= $(COMMANDS_DIR) $(PUSH_SWAP_DIR)
